@@ -12,6 +12,7 @@ A opensourced car driving lane image datasets is used for training the model.
 Ofcourse ConvNets, But implementing this paper on [Fully Convolutional Networks
 for Semantic Segmentation](https://arxiv.org/pdf/1605.06211.pdf]).
 
+The basic idea behind Fully ConvNets is all the layers are Convolution layers instead of Fully connected layer in the end.
 
 
 
