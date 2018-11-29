@@ -125,3 +125,7 @@ Deconv6 (Conv2DTranspose)    (None, 78, 158, 16)       2320
 _________________________________________________________________
 Final (Conv2DTranspose)      (None, 80, 160, 1)        145       
 </pre>
+
+
+## Demo
+[Demo Video](https://youtu.be/uuNogBDJnws)
