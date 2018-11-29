@@ -31,6 +31,39 @@ I used a combination of color and gradient thresholds to generate a binary image
 ### Perspective transform
 ![](img/warped.png)
 
+Used OpenCV to get the transform.I verified that my perspective transform was working as expected
+ by drawing 
+the 
+`src` and 
+`dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+
+### Polynomial fit
+![](img/polyfit.png)
+
+In order to identify which pixels of a given binary image belong to lane-lines, we have (at least) two possibilities. If we have a brand new frame, and we never identified where the lane-lines are, we must perform an exhaustive search on the frame.
+starting from the bottom of the image, precisely from the peaks location of the histogram of the binary image, we slide two windows towards the upper side of the image, deciding which pixels belong to which lane-line.
+
+
+### Windows
+![](img/boxes.png)
+
+### Curvature 
+```
+       ((1 + (2 * coeffs[0] * y_eval + coeffs[1]) ** 2) ** 1.5) / np.absolute(2 * coeffs[0])
+```
+
+### Histogram
+![](img/histo.png)
+
+### Output image
+![](img/outout.png)
+
+### Final output with curvature
+![](img/output.png)
+
+### Videos
+[test video](output_videos/project_video_output.mp4)
+[challange video](output_videos/challenge_video_output.mp4)
 
 
 
