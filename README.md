@@ -66,7 +66,10 @@ starting from the bottom of the image, precisely from the peaks location of the 
 [challange video](output_videos/challenge_video_output.mp4)
 
 
-
+## Problems faced
+There is a computation problem ,as processing the video takes more time and cannot be integreated
+ directly into any self driving cars. And i have also explored deep learning approach for this 
+ task, which is below.
 
 
 
