@@ -1,14 +1,53 @@
 # Advanced Lane Detection
+![](img/output.png)
 
+The goals / steps of this project are the following:
+
+* Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
+* Apply a distortion correction to raw images.
+* Use color transforms, gradients, etc., to create a thresholded binary image.
+* Apply a perspective transform to rectify binary image ("birds-eye view").
+* Detect lane pixels and fit to find the lane boundary.
+* Determine the curvature of the lane and vehicle position with respect to center.
+* Warp the detected lane boundaries back onto the original image.
+* Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+
+
+### Camera Calibration
+
+OpenCV provide some really helpful built-in functions for the task on camera calibration. First 
+of all, to detect the calibration pattern in the calibration images, we can use the function `cv2.findChessboardCorners(image, pattern_size)`. 
+
+Once we have stored the correspondeces between 3D world and 2D image points for a bunch of images, we can proceed to actually calibrate the camera through `cv2.calibrateCamera()`. Among other things, this function returns both the *camera matrix* and the *distortion coefficients*, which we can use to undistort the frames.
+
+![](img/chess.png)
+
+
+### Color transforms, Gradients
+![](img/threshold.png)
+I used a combination of color and gradient thresholds to generate a binary image. In order to detect the white lines, I found that [equalizing the histogram](http://docs.opencv.org/3.1.0/d5/daf/tutorial_py_histogram_equalization.html) of the input frame before thresholding works really well to highlight the actual lane lines. For the yellow lines, I employed a threshold on V channel in [HSV](http://docs.opencv.org/3.2.0/df/d9d/tutorial_py_colorspaces.html) color space. Furthermore, I also convolve the input frame with Sobel kernel to get an estimate of the gradients of the lines. Finally, I make use of [morphological closure](http://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html) to *fill the gaps* in my binary image.
+
+
+### Perspective transform
+![](img/warped.png)
+
+
+
+
+
+
+
+# Deep Learning Approach
 
 In this Repo, Deep Learning approach is going to be used instead of just Image Processing / video processing like [Self-Driving-Car-LaneDetection](https://github.com/shangeth/Self-Driving-Car-LaneDetection)
 
 ![](https://github.com/shangeth/Self-Driving-Car-LaneDetection/raw/master/img.png)
 
-# Datasets
+
+## Datasets
 A opensourced car driving lane image datasets is used for training the model.
 
-# Model
+## Model
 Ofcourse ConvNets, But implementing this paper on [Fully Convolutional Networks
 for Semantic Segmentation](https://arxiv.org/pdf/1605.06211.pdf]).
 
